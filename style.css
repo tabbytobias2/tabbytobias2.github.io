@@ -1,0 +1,13 @@
+
+.curve-box {
+border:3px solid orange;
+border-radius:27px;
+margin-left:5%;
+font-family:verdana;
+padding: 20px;
+width:90px;
+background: linear-gradient(to bottom right, #5c5c5c 0%, #2e2e2e 100%);}
+      
+body {
+background: linear-gradient(to bottom right, #36393f 17%, #737373 120%);
+}
