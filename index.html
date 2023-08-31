@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--data-->
+    <link rel="icon" type="image/x-icon" href="https://www.tabbytobias2.com/media/tabbytobias2%20logo.png">
+    <title>tabbytobias2.com</title>
+    
+      <!--Metadata-->
+      <meta name="viewport" content="width=device-width, initial-scale=0.9">
+      <meta charset="UTF-8">
+      <meta name="description" content="Hi my name is tabbytobias2, and this is my website!">
+<style>
+body {
+  padding: 10px;
+  background: #333;
+}
+header.title {
+  padding: 10px;
+  text-align: center;
+  background: #2b2b2b;
+  overflow: auto;
+  border-radius:5px;
+  border:1px solid blue;
+}
+
+h1.title {
+  font-size: 4.4vh;
+  font-family:verdana;
+  position: relative;
+  animation-name: titledrop;
+  animation-timing-function: ease-in-out;
+  animation-duration: 1s;
+}
+
+#logo {
+  animation-name: spin-in;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-in-out;
+  display:block;
+}
+
+section.about {
+  background-color: #686868;
+  padding-left: 1%;
+  padding-top: 0.1%;
+  padding-bottom: 0.5%;
+  width: 98%;
+  margin:auto;
+  border: 4px solid black;
+  border-radius: 12px;
+}
+  
+section.about a {
+  text-shadow: 0px 0px 3px cyan;
+  color: blue;
+  text-decoration:underline;
+}
+section.about h2 {
+  text-shadow: 0px 0px 7px cyan;
+  color: #0004ec;
+  font-family: verdana;
+  font-size:3vw;
+  text-decoration:underline;
+}
+
+.nav {
+  position: sticky;
+  top:0;
+  overflow: auto;
+  width:100%;
+  background-color: #181111;
+}
+
+.nav a {
+  float: left;
+  display: block;
+  color: #be2b2b;
+  text-align: center;
+  border-right:1px solid blue;
+  border-left:1px solid blue;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-family: Tahoma, sans-serif;
+  transition:0.8s;
+}
+
+.nav a:hover {
+  text-shadow: 0px 0px 3px cyan;
+  background-color: #3d3d3d;
+  border-right:1px solid red;
+  border-left:1px solid red;
+  color: #d7ff25;
+  transition:0.5s;
+}
+
+footer {
+  text-align:center;
+  font-family:arial;
+  padding: 4px;
+  text-align: center;
+  background: #202020;
+  overflow: auto;
+  border-radius:5px;
+  border:1px solid black;
+}
+
+footer hr {
+  border:1px solid #505050;
+  width:60%;
+}
+
+footer p {
+  color:cyan;
+}
+
+footer a {
+  color:red;
+}
+@keyframes titledrop {
+  0%   {top:-200px;}
+  100% {top:0vw;}
+}
+
+@keyframes spin-in {
+  0% {transform: translateY(-200%); rotate: -100deg;}
+  100% {transform: translateX(0); rotate: 0deg;}
+}
+</style>
+</head>
+<body>
+<header class="title">
+
+<a target="_blank" href="media/tabbytobias2%20logo.png">
+  
+  <img id="logo" title="Do you like my logo?" 
+  style="float:left; width: 5vh; height: 5vh; margin-top:1%; margin-left: 1%; border: 1px solid #bd2121;border-radius:10px;"
+  
+  src="https://www.tabbytobias2.com/media/tabbytobias2%20logo.png" alt="logo">
+  </a>
+
+<h1 class="title" onclick="console.log('yes, that is my name')">tabbytobias2<i>.com</i></h1>
+
+</header>
+<div class="nav">
+
+  <a target="_blank" href="https://www.youtube.com/channel/UCuH6Ndsy9qd2mDw9rt5kRrw" title="Plz sub">Youtube</a>
+  
+  <a target="_blank" href="https://scratch.mit.edu/users/tabbytobias2/" title="Where I started coding">Scratch</a>
+  
+  <a target="_blank" href="https://github.com/tabbytobias2" title="Where i code stuff">Github</a>
+
+  <a target="_self" href="https://www.tabbytobias2.com" title="Homepage" style="float:right;">Home</a>
+  
+</div>
+
+<br>
+
+<section class="about">
+    <h2><i>About Me</i></h2>
+<p style="font-family:arial; font-size:20px;">
+    <b>Hi, my name is tabbytobias2,<br>
+    I have been coding since I was <non title="only scratch though ¯\_(ツ)_/¯">six</non>, and I am now thirteen.<br>
+    I started out in 
+    <a target="_blank" href="https://scratch.mit.edu">scratch</a>
+    , and then (a few years later)<br>
+    got into web development after finding 
+    <a target="_blank" href="https://www.w3schools.com/">W3schools</a>.<br>
+    There I learnt html and css, and acquired basic knowledge of <non title="*cough* toy language *cough*">python<non> and javascript.<br> Nowadays i code fluently in a multitude of languages such as: <non title="better than rust and zig">c++</non>, c, lua, <non onclick="alert('hi')">javascript</non>, c#, and html/css.<!--defo didn't try brainf**k 🤯-->
+    
+    
+    <br><br>
+    As a programmer I have realized that
+    the only limit is my imagination.</b>
+</p>
+</section>
+
+<br>
+
+<footer>
+<p>Website made by <a href="https://github.com/tabbytobias2">tabbytobias2</a>
+
+<hr>
+<a href="https://github.com/tabbytobias2/tabbytobias2.github.io">Source code</a>
+</p>
+</footer>
+</body>
+</html>
+
