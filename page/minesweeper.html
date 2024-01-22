@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabbytobias2's Discord Minesweeper</title>
+    <style>
+        h1 {
+            margin-top: 3rem;
+            text-align: center;
+            font-family: Verdana;
+            text-shadow: 1rem;
+        }
+
+        img#logo {
+            float:left; width: 4rem; height: 4rem; margin-left: 1rem; margin-top: 1rem; border: 1px solid #bd2121;border-radius:10px;
+            position: absolute;
+        }
+
+        body {
+            background-color:#333;
+            margin:auto;
+        }
+        
+        div#page {
+            position: absolute;
+            margin-top:2rem;
+            width:97%;
+            height:97%;
+            border:2px solid blue;
+            transform: translate(-50%, -50%);
+            top:50%;
+            left: 50%;
+            background: radial-gradient(#777, #333);
+        }
+        html {
+            overflow: auto;
+        }
+        div#title {
+            height: 7rem;
+        }
+
+        div#sweeper {
+            margin: auto;
+            padding: 3rem;
+            height:100%;
+        }
+
+        label {
+            font-family: Verdana;
+            font-weight: bold;
+            background-color: #777;
+            border: 1px solid black;
+            border-radius: 0.3rem;
+        }
+
+        button {
+            background-color:green;
+            padding:0.5rem;
+            border: 1px solid black;
+            border-radius: 0.2rem;
+            transition:0.5s;
+        }
+
+        button:hover {
+            background-color:lightgreen;
+            padding:0.5rem;
+            border: 1px solid black;
+            border-radius: 0.2rem;
+            transition:0.3s;
+        }
+
+        input {
+            font-family: Arial;
+            border:1px solid blue;
+            padding:2px;
+            border-radius: 0.5rem;
+            font-weight: bold;
+        }
+        
+        hr {
+            border:1px solid blue;
+        }
+
+        div#output {
+            overflow: auto;
+            width:100%;
+            background-color: #999;
+            color:black;
+            border: 1px solid black;
+            min-height: 10rem;
+            border-radius: 1rem;
+            margin-top: 1.5rem;
+            font-family: arial;
+            font-size: 1rem;
+            padding: 0.1rem;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="page">
+        <div id="title">
+            <img id="logo" title="Do you like my logo?" src="https://www.tabbytobias2.com/media/tabbytobias2%20logo.png" alt="logo">
+            <h1>Discord Minesweeper</h1>
+        </div>
+        <hr>
+        <div id="sweeper">
+            <label for="rows">Rows:</label>
+            <input type="number" id="rows" min="1" value="8">
+        
+            <label for="columns">Columns:</label>
+            <input type="number" id="columns" min="1" value="8">
+        
+            <label for="mines">Mines:</label>
+            <input type="number" id="mines" min="1" value="7">
+        
+            <button onclick="sweep(get('rows'), get('columns'), get('mines'))">Generate Minesweeper game.</button>
+
+            <div id="output">
+                Click generate to create a message, that when sent in a discord server, is a playable Minesweeper game!
+            </div>
+        </div>
+    <script>
+        function get(id) {
+            const element = document.getElementById(id);
+
+            if (element) {
+              const value = parseFloat(element.value);
+              return value;
+            }
+            return 0;
+        }
+    
+    function sweep(rows, cols, mineCount)  {
+        if((rows * cols) < mineCount) {
+            document.getElementById('output').innerText =  "Error: Too many mines, maximum = " + (rows * cols);
+        }
+
+        const grid = Array.from({ length: rows }, () => Array(cols).fill(0));
+      
+        for (let i = 0; i < mineCount; i++) {
+          let row, col;
+          do {
+            row = Math.floor(Math.random() * rows);
+            col = Math.floor(Math.random() * cols);
+          } while (grid[row][col] === 'mine');
+      
+          grid[row][col] = 'mine';
+      
+          for (let r = Math.max(0, row - 1); r <= Math.min(rows - 1, row + 1); r++) {
+            for (let c = Math.max(0, col - 1); c <= Math.min(cols - 1, col + 1); c++) {
+              if (grid[r][c] !== 'mine') {
+                grid[r][c] = (parseInt(grid[r][c], 10) + 1).toString();
+              }
+            }
+          }
+        }
+      
+        for (let r = 0; r < rows; r++) {
+          for (let c = 0; c < cols; c++) {
+            switch (grid[r][c]) {
+              case 'mine':
+                grid[r][c] = '||:bomb:||';
+                break;
+              case 0:
+                grid[r][c] = '||:black_square_button:||';
+                break;
+              case '1':
+                grid[r][c] = '||:one:||';
+                break;
+              case '2':
+                grid[r][c] = '||:two:||';
+                break;
+              case '3':
+                grid[r][c] = '||:three:||';
+                break;
+              case '4':
+                grid[r][c] = '||:four:||';
+                break;
+              case '5':
+                grid[r][c] = '||:five:||';
+                break;
+              case '6':
+                grid[r][c] = '||:six:||';
+                break;
+              case '7':
+                grid[r][c] = '||:seven:||';
+                break;
+              case '8':
+                grid[r][c] = '||:eight:||';
+                break;
+              case '9':
+                grid[r][c] = '||:nine:||';
+                break;
+            }
+          }
+        }
+        
+        const output = "# " + grid.map(row => row.join(' ')).join('\n# ');
+        if(output.length <= 2000) {
+            document.getElementById('output').innerText = output;
+        } else {
+            document.getElementById('output').innerText = "Text overshoots Discord's character limit by " + (output.length - 2000) + " characters, please make the grid smaller or attempt to regenerate.";
+        }
+        
+      }
+    </script>
+</body>
+</html>
