@@ -136,6 +136,7 @@
     function sweep(rows, cols, mineCount)  {
         if((rows * cols) < mineCount) {
             document.getElementById('output').innerText =  "Error: Too many mines, maximum = " + (rows * cols);
+            return 0;
         }
 
         const grid = Array.from({ length: rows }, () => Array(cols).fill(0));
